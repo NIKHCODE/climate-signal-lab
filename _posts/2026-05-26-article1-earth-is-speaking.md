@@ -150,7 +150,7 @@ This is not a gradual drift. The system changed pace.
 Everything you just read is visible in this chart — built directly from NASA and OWID data. No approximations, no styling tricks. Every line is computed from raw numbers.
 
 <div style="width:100%; height:700px;">
-<iframe src="/climate-signal-lab/assets/article1_chart.html"
+<iframe src="https://nikhcode.github.io/climate-signal-lab/assets/article1_chart.html"
         width="100%" height="700px"
         style="border:none; border-radius:8px;">
 </iframe>
