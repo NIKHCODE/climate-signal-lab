@@ -1,5 +1,5 @@
 ---
-title: "The Earth Is Speaking — 140 Years of Climate Data, and What It's Telling Us"
+title: "The Earth Is Speaking, 140 Years of Climate Data, and What It's Telling Us"
 date: 2026-05-26 09:00:00 +0530
 categories: [Climate Signal Lab, Data Science]
 tags: [climate, eda, python, nasa, plotly, wed2026, time-series]
