@@ -17,12 +17,11 @@ baseurl: "/climate-signal-lab"
 github:
   username: NIKHCODE
 
-twitter:
-  username: ""
+
 
 social:
   name: Nikhil
-  email: ""
+  email: "madalanikhilsai@gmail.com"
   links:
     - https://github.com/NIKHCODE
 
@@ -40,7 +39,7 @@ pageviews:
 theme_mode: dark
 
 cdn:
-avatar:
+avatar:/assets/mypic.jpeg
 social_preview_image:
 
 toc: true
