@@ -1,65 +1,46 @@
-# The Site Configuration
-
-# Import the theme
 theme: jekyll-theme-chirpy
-
 lang: en
 timezone: Asia/Kolkata
-
 title: Climate Signal Lab
 tagline: "Data. Math. Code. A planet worth paying attention to."
 description: >-
   A CS student's data-driven exploration of 140 years of climate signals. Real datasets, mathematical foundations, and working models — built for World Environment Day 2026.
-
 url: "https://nikhcode.github.io"
 baseurl: "/climate-signal-lab"
-
 github:
   username: NIKHCODE
-
-
-
+twitter:
+  username: ""
 social:
   name: Nikhil
-  email: "madalanikhilsai@gmail.com"
+  email: ""
   links:
     - https://github.com/NIKHCODE
-
 webmaster_verifications:
   google:
   bing:
-
 analytics:
   google:
     id:
-
 pageviews:
   provider:
-
 theme_mode: dark
-
 cdn:
-avatar:/assets/mypic.jpeg
+avatar: /assets/mypic.jpeg
 social_preview_image:
-
 toc: true
-
 comments:
   provider:
-
 assets:
   self_host:
     enabled:
     env:
-
 pwa:
   enabled: true
   cache:
     enabled: true
     deny_paths:
-
 paginate: 10
-
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
@@ -70,12 +51,10 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
-
 collections:
   tabs:
     output: true
     sort_by: order
-
 defaults:
   - scope:
       path: ""
@@ -95,10 +74,8 @@ defaults:
     values:
       layout: page
       permalink: /:title/
-
 sass:
   style: compressed
-
 compress_html:
   clippings: all
   comments: all
@@ -107,7 +84,6 @@ compress_html:
   blanklines: false
   ignore:
     envs: [development]
-
 exclude:
   - "*.gem"
   - "*.gemspec"
@@ -118,7 +94,6 @@ exclude:
   - purgecss.js
   - "*.config.js"
   - "package*.json"
-
 jekyll-archives:
   enabled: [categories, tags]
   layouts:
