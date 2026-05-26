@@ -26,7 +26,7 @@ pageviews:
   provider:
 theme_mode: dark
 cdn:
-avatar: /assets/mypic.jpeg
+avatar: /assets/mypic.JPEG
 social_preview_image:
 toc: true
 comments:
