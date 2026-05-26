@@ -7,7 +7,7 @@ math: true
 description: "Article 1 of 5 — Using NASA GISS data, rolling statistics, and Python to understand 140 years of global temperature change."
 ---
 
-*Article 1 of 5 in the **Climate Signal Lab** series — published leading up to World Environment Day, June 5, 2026.*
+This is the first article in a 5-part series leading up to **World Environment Day on June 5, 2026**. Each article pairs real data analysis with honest opinion. No doom, no denial — just what the numbers actually say.
 
 ---
 
@@ -29,13 +29,12 @@ I thought the same thing. Until I actually looked at the data myself and realize
 
 I'm a computer science student who is also a very pro-environment human, and honestly, I was tired of reading about climate change through the filter of news articles and opinion pieces. Everyone has an angle and a different perspective. The global left is panicking while the right is dismissing.
 
-I really wanted clarity. Are we doing better or not? Did conditions improve? There were a lot of questions, and all I could think was — *okay, why not do the research and come to a conclusion yourself?*
+I really wanted clarity. Are we doing better or not? Did conditions improve? There were a lot of questions, and all I could think was — *okay, why not do the research on my own and come to a conclusion ?*
 
 So here I am doing what I do best. I went to the source. I downloaded 145 years of raw temperature data directly from NASA. I wrote Python code to analyze it. I plotted it myself. No editorial spin. Just numbers.
 
 What I found genuinely surprised me. And I think it'll surprise you too.
 
-This is the first article in a 5-part series leading up to **World Environment Day on June 5, 2026**. Each article pairs real data analysis with honest opinion. No doom, no denial — just what the numbers actually say.
 
 ---
 
@@ -178,7 +177,7 @@ The numbers in this article are not abstract to me. They are the weather outside
 
 ## What's Coming Next
 
-**Article 2 drops May 28.**
+**Article 2 drops on May 28th.**
 
 We'll take this same dataset and ask a harder question: *when exactly did the climate trend break?* Not visually — statistically. Using an algorithm called PELT (Pruned Exact Linear Time), we'll detect the precise structural breakpoints in the temperature record and compute what the warming rate was before and after each one.
 
