@@ -1,10 +1,10 @@
 ---
 title: "The Breaking Points - When Did the Climate Trend Actually Change?"
-date: 2026-05-28 09:00:00 +0530
+date: 2026-05-27 09:00:00 +0530
 categories: [Climate Signal Lab, Data Science]
 tags: [climate, changepoint, pelt, python, statistics, wed2026]
 math: true
-description: "Article 2 of 5 — Using the PELT algorithm to statistically detect the exact years the climate trend structurally broke."
+description: "Article 2 of 5, Using the PELT algorithm to statistically detect the exact years the climate trend structurally broke."
 ---
 
 *Article 2 of 5 in the **Climate Signal Lab** series — published leading up to World Environment Day, June 5, 2026.*
