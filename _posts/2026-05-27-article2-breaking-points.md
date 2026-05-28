@@ -11,9 +11,7 @@ description: "Article 2 of 5, Using the PELT algorithm to statistically detect t
 
 ---
 
-In Article 1, we looked at 145 years of NASA temperature data and saw a clear upward curve. The rolling mean told us warming was happening and accelerating.
-
-But "it's getting worse" is not a precise statement. It's an observation.
+In Article 1, we looked at 145 years of NASA temperature data and saw a clear upward curve. The rolling mean told us warming was happening and accelerating. So my next step is obviously to look into how these trends were shaped .
 
 Today I want to be precise. I want to answer: **exactly when did the climate trend structurally break?** Not visually — statistically. Using a real algorithm on real data.
 
@@ -25,13 +23,13 @@ When you look at the temperature chart from Article 1, you can roughly see that 
 
 This is where statistics becomes genuinely useful. Instead of eyeballing a chart and guessing, we can use an algorithm that reads every single data point and mathematically identifies where the underlying trend changed — with no human bias involved.
 
-That algorithm is called **PELT**.
+That algorithm is called **PELT**.(Not something I learnt in class but while doing research)
 
 ---
 
-## What is PELT?
+## So what is this PELT Algorithm?
 
-PELT stands for **Pruned Exact Linear Time**. It's a change point detection algorithm — meaning it finds the moments in a time series where the statistical behavior of the data fundamentally shifts.
+PELT stands for **Pruned Exact Linear Time**. It's a change point detection algorithm : meaning it finds the moments in a time series where the statistical behavior of the data fundamentally shifts and that is excactly what we are finding now!!
 
 Think of it this way. Imagine you're tracking the daily temperature in your city over 10 years. Most of the time it fluctuates normally. But one year, a factory opens nearby and the average temperature subtly but permanently shifts upward. PELT would find exactly which month that shift happened — even if it's not obvious to the naked eye.
 
@@ -66,7 +64,7 @@ Here's what each segment looks like:
 | 4 | 2001–2014 | +0.096°C per decade | +0.634°C |
 | 5 | 2015–2024 | +0.273°C per decade | +0.987°C |
 
-The last segment is warming **222 times faster** than the first.
+The last segment is warming **222 times faster** than the first which is an alrming rate.
 
 Let that number sit for a moment.
 
@@ -88,7 +86,7 @@ The Clean Air Acts of the 1970s reduced this pollution — and ironically, unmas
 
 **1979–2000: The Awakening**
 
-The trend breaks sharply in 1979. Warming accelerates to +0.124°C per decade — 124 times faster than the first segment. This is the period when climate scientists started raising serious alarms. James Hansen's famous 1988 Congressional testimony happened right in the middle of this segment.
+The trend breaks sharply in 1979. Warming accelerates to +0.124°C per decade — 124 times faster than the first segment. This is the period when climate scientists started raising serious alarms. 
 
 **2001–2014: The New Normal**
 
@@ -131,14 +129,14 @@ The penalty parameter $\beta = 3$ controls sensitivity. A lower penalty finds mo
 
 ## My Take
 
-*(Add your personal opinion here — what surprised you, what frustrated you, your perspective as someone living in India experiencing these changes firsthand)*
+When I first observed the trend between 1937 and 1978 I was surprised and quite happy. Initially I assumed that maybe after worldwars and other global changes there was a slowdown in the greenhouse gases emissions and the planet was finally able to breathe but what really happened was something that I never knew existed and probably a lot of people too.
+That cooling was due to the pollution emissions reflecting sunlight back and masking the warming effect of carbondioxide but the real effect came decades after when the seal has finaaly opened and the mercury started going alarmingly high and now the number that I keep coming back to is **222x**. The climate is warming 222 times faster in the last decade than it was in the first 56 years of the record. That is not a linear problem. That is an exponential one.
 
-The number that I keep coming back to is **222x**. The climate is warming 222 times faster in the last decade than it was in the first 56 years of the record. That is not a linear problem. That is an exponential one.
+And yet our policy responses have been largely linear — slow committees, incremental targets, decade-long timelines. There is a fundamental mismatch between the speed of the problem and the speed of the response. What should have been the funadamentally biggest concern to every nation and their leaders is nowhere seen as the top priority. In 2026 with wars raging in every corner of the world, oil and gas prices soaring record high per barrel and countries facing severe economic tensions I am now worried that will Environment policies even make a headline..
 
-And yet our policy responses have been largely linear — slow committees, incremental targets, decade-long timelines. There is a fundamental mismatch between the speed of the problem and the speed of the response.
+WED 2026 is happening in Azerbaijan which sits in middle-east where the ugly war between US and Iran is happening. I wonder with what moral right the leaders of these nations even tell on June 5th when green activists and common public watches.
 
-The algorithm doesn't know about politics. It just finds where the math changed. The math changed in 1979. We've had 45 years.
-
+All we can hope now is for some sense to prevail in these policy makers.
 ---
 
 ## What's Coming Next
