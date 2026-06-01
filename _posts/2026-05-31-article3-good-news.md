@@ -104,12 +104,8 @@ If this trajectory holds, by 2031 the world will have 10 terawatts of solar capa
 ---
 
 ## The Visualization
-
 <div style="width:100%; height:580px;">
-<iframe src="https://nikhcode.github.io/climate-signal-lab/assets/article3_chart.html"
-        width="100%" height="580px"
-        style="border:none; border-radius:8px;">
-</iframe>
+<iframe src="https://nikhcode.github.io/climate-signal-lab/assets/article3_chart.html" width="100%" height="580px" style="border:none; border-radius:8px;"></iframe>
 </div>
 
 *Yellow dots are actual IRENA data. The red dashed line is the exponential model. The shaded band is ±15% confidence. Everything right of the dotted line is forecast.*
