@@ -167,13 +167,6 @@ To power a city entirely on solar requires enormous land area. A solar farm prod
 4. End of Life Problem
 Solar panels last 25-30 years. After that they need to be disposed of or recycled. Currently, solar panel recycling infrastructure is massively underdeveloped. By 2050, the world will have millions of tonnes of panel waste. This is a problem being largely ignored right now.
 
-5. Energy Storage at Scale
-Current lithium-ion batteries — the main storage technology — have their own problems:
-
-Lithium and cobalt mining is environmentally destructive
-Battery degradation over time
-Fire risk at large scale
-Not yet economical for grid-scale seasonal storage
 
 There is something deeply interesting about fitting a mathematical model to hope.
 The exponential curve doesn't care about politics. It doesn't care about which party is in power or what happened at the last climate summit. It just reflects what millions of individual decisions, by engineers, investors, governments, and homeowners have collectively produced and what they've produced is genuinely remarkable. In 2000, solar was a rounding error in global energy. In 2024, it's the fastest-growing energy source in history by a wide margin.
