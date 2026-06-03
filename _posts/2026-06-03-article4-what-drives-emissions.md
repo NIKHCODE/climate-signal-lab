@@ -7,23 +7,23 @@ math: true
 description: "Article 4 of 5 - Using Random Forest and SHAP values to find what really drives CO2 emissions across 40 countries, with a deep dive into India."
 ---
 
-*Article 4 of 5 in the **Climate Signal Lab** series, published leading up to World Environment Day, June 5, 2026.*
+*Article 4 of 5 in the **Climate Files** series, published leading up to World Environment Day, June 5, 2026.*
 
 ---
 
 Everyone has a theory about what causes climate change.
 
-Rich countries blame population growth in developing nations. Developing nations point at the industrial history of the West. Oil companies talk about individual carbon footprints. Governments cite technological limitations. Everyone is pointing at someone else.
+Rich countries blame population growth in developing nations. Developing nations point at the industrial history of the West. Oil companies talk about individual carbon footprints. Governments cite technological limitations. Everyone is pointing at someone else and what we see everyday is a blame game.
 
-I got tired of the circular argument. So I built a machine learning model, fed it data from 40 countries, and let the math decide.
-
-The answer was more interesting than I expected. And more uncomfortable.
+I got tired of the circular argument. So I built a machine learning model, fed it data from 40 countries which are economically, socially and geographically important, and let the math decide. 
+The answer was more interesting than I expected and more uncomfortable.
 
 ---
 
 ## What I Built and Why
 
 For this article I trained a **Random Forest** model on country-level data and then used **SHAP analysis** to understand exactly what the model learned. Together these two tools answer not just "can we predict emissions" but "why does each country emit what it emits."
+We all know that there is carbon-dioxide emissions and this is the primary reason for global warming but we fail to understand is individual country wise analysis on the factors driving these emissions. In this piece we will discuss on factors with a special case study on India and what probable solutions we can come up with.
 
 The dataset covers 40 countries representing every continent, income level, and energy mix. The five features I used as inputs:
 
@@ -42,19 +42,19 @@ The target variable: CO₂ emissions per capita, measured in tonnes per person p
 ### Random Forest
 
 A decision tree works like a flowchart. It asks questions about a country's data and follows branches to reach a prediction. For example:
-Is GDP per capita above $30,000?
-Yes → Is fossil fuel % above 70%?
-Yes → Predict: 12 tonnes
-No  → Predict: 7 tonnes
-No → Is renewable % above 50%?
-Yes → Predict: 2 tonnes
-No  → Predict: 3.5 tonnes
+Is GDP per capita above $30,000? 
+ Yes → Is fossil fuel % above 70%?
+ Yes → Predict: 12 tonnes
+ No  → Predict: 7 tonnes
+ No → Is renewable % above 50%?
+ Yes → Predict: 2 tonnes
+ No  → Predict: 3.5 tonnes
 
 One tree can be wrong. It might learn patterns specific to the training data that don't generalize. A Random Forest solves this by building 200 such trees, each trained on a slightly different random subset of the data, and averaging their predictions:
 
 $$\hat{y} = \frac{1}{n}\sum_{i=1}^{n} T_i(x)$$
 
-Where $T_i(x)$ is what tree number $i$ predicts for a given country. With 200 trees voting, the quirks of any individual tree get averaged out. The result is a more stable and reliable prediction.
+Where $T_i(x)$ is what tree number $i$ predicts for a given country. With 200 trees voting, the quirks of any individual tree get averaged out. The result is a more stable and reliable prediction. 
 
 The model achieved an R² of 0.46 on the test set. This means it explains about 46% of the variation in emissions across countries. For a dataset of only 40 countries with 5 features, this is expected and acceptable. The goal here is not pinpoint prediction accuracy. The goal is understanding which factors matter most, and for that, the SHAP analysis is what we care about.
 
@@ -94,9 +94,9 @@ However, the relationship is not simple. Renewables affect electricity emissions
 
 **Urban Population Percentage**
 
-This one surprises people. Urban areas are often thought of as polluted and carbon-heavy. But at the per-capita level, cities are actually more efficient. People in dense cities share infrastructure, use public transport, live in smaller spaces, and travel shorter distances for daily needs. Rural populations in large countries often drive long distances, live in larger and less energy-efficient homes, and have fewer alternatives to private vehicles.
+This one surprised me. Our general perception is that Urban areas are polluted and carbon-heavy. But at the per-capita level, cities are actually more efficient. People in dense cities share infrastructure, use public transport, live in smaller spaces, and travel shorter distances for daily needs. Rural populations in large countries often drive long distances, live in larger and less energy-efficient homes, and have fewer alternatives to private vehicles.
 
-The relationship is further complicated by what kind of urbanization is happening. Dense European cities produce very different emissions patterns than sprawling car-dependent American suburbs.
+The relationship is further complicated by what kind of urbanization is happening. Dense European cities produce very different emissions patterns than sprawling car-dependent American suburbs. 
 
 **Industry Share of GDP**
 
@@ -104,6 +104,9 @@ Manufacturing, construction, and heavy industry are among the most carbon-intens
 
 This is also related to global supply chains. When wealthy countries outsource their manufacturing to developing nations, they effectively export their emissions. The goods are consumed in rich countries but the carbon is counted in the producing country.
 
+The best example that I can give is data centres. This industry requires huge fresh water to cool down its machinery. In the United States the companies like google faced protests against building them from local activits to internationally renowed environmentalists. The companies now started moving to countries like India which is eyeing investments to boost it's economy. This might heavily damage sensitive Indian eco-system. 
+So what might be seen as development by one may not really be development for others.
+ 
 **Fossil Fuel Percentage**
 
 The most direct measure of dependence on carbon-emitting energy. A country where 95% of energy comes from coal, oil, and gas will emit significantly more than one with a diversified clean energy mix, all else being equal.
@@ -137,9 +140,9 @@ The global visualization below shows SHAP contributions for all 40 countries. Ea
 
 **How to read this chart:**
 
-Countries at the top (Ethiopia, Kenya, Bangladesh) have the lowest emissions. Their bars are almost entirely on the negative side, meaning GDP is pulling their predictions down strongly. They are poor, so they emit little.
+Countries at the bottom (Ethiopia, Kenya, Bangladesh) have the lowest emissions. Their bars are almost entirely on the negative side, meaning GDP is pulling their predictions down strongly. They are poor, so they emit little.
 
-Countries at the bottom (UAE, Australia, USA, Canada) have the highest emissions. Their bars extend far into the positive side, with GDP being the dominant orange bar pushing emissions up.
+Countries on the top (UAE, Australia, USA, Canada) have the highest emissions. Their bars extend far into the positive side, with GDP being the dominant orange bar pushing emissions up.
 
 The green bars (renewables) are visible as negative contributions for countries like Norway, Sweden, Brazil, and Denmark. These are the countries where investment in clean energy is actually measurably reducing emissions relative to what their wealth level would predict.
 
@@ -155,7 +158,7 @@ India deserves its own section because it is the most analytically interesting c
 
 **The headline number: India emits 1.9 tonnes of CO₂ per capita.**
 
-The world average is 6.16 tonnes. India is 69% below the world average. For the world's most populous country, the fifth largest economy, and a nation that is industrializing rapidly, this is a genuinely remarkable statistic.
+The world average is 6.16 tonnes. India is 69% below the world average. For the world's most populous country, the fifth largest economy, and a nation that is industrializing rapidly, this is a genuinely remarkable statistic. Everyday we hear news on pollution, AQI, heatwaves but atleast our emissions are far below the global average. (I am not dismissing that AQI and others things are not important but we are performing relatively better)
 
 <div style="width:100%; height:520px;">
 <iframe src="https://nikhcode.github.io/climate-signal-lab/assets/article4_chart_india.html"
@@ -210,15 +213,29 @@ The path India takes over the next 20 years, as it inevitably grows wealthier, w
 
 ## My Take
 
-*Here are some honest directions for you to write from:*
+Honestly I have spoken pretty much on everything from factors to maths and models. Howvwer I personally want to talk about India. In the visualization section I mentioned on factors and how our gdp is driving emission low but if you really understand the Indian way of living which is rooted in sustainable living its not really tough to see the math.
 
-The finding about GDP being five times more important than fossil fuels is worth sitting with. We spend enormous political energy debating oil pipelines and coal plants, and the data is telling us the deeper variable is economic structure and consumption levels. What does that mean for climate policy?
+The SHAP model explains India's low emissions through GDP, urbanization, and energy mix. These are measurable variables. But there is a fifth factor that no dataset captures, and I think it deserves to be said explicitly.
 
-Think about the climate justice dimension. India and Bangladesh together have 1.6 billion people emitting less than 2 tonnes each. The UAE has 10 million people emitting over 20 tonnes each. At what point does the global climate conversation need to center on consumption levels in wealthy nations rather than development choices in poor ones?
+Indians, as a culture, have been practicing low-waste sustainable living for thousands of years. Not because of climate policy. Not because of government mandates. Because of how we were raised.
 
-The Brazil example is genuinely hopeful. It shows that economic growth and low emissions are not mutually exclusive. But Brazil's clean energy comes from hydropower built decades ago, which has its own ecological costs. Can India replicate that with solar and wind at the scale required?
+Think about what happens in a typical Indian household:
 
-Write about what it feels like to look at this data as someone living in India during a 50 degree summer. The numbers say India is not the problem. The heat outside your window says the problem has arrived anyway. That tension is real and worth articulating.
+A steel dabba that belonged to your grandmother is still being used to pack lunch today. Leftover rice from last night becomes tomorrow's breakfast. Old sarees become dusters. Broken plastic buckets become plant pots. Worn-out clothes are cut into rags before they are ever thrown away. Nothing leaves the house until it has been used completely, repurposed at least once, and exhausted of every possible function.
+
+This is not nostalgia. This is a deeply embedded cultural philosophy that has no direct translation in Western economics. The closest term is the Japanese concept of *mottainai*, the feeling of regret over waste. In India it is not even a feeling. It is just how things are done.
+
+The concept of **jugaad** — frugal innovation, making something work with whatever you have is not just an engineering principle. It is a way of life that extends from village workshops to middle-class kitchens to construction sites. Where a Western household might discard and replace, an Indian household finds a way to repair, repurpose, and extend.
+
+Consider what this means at scale. India has 1.4 billion people. If even a fraction of daily consumption decisions involve choosing to reuse over replace, to repair over discard, to share over own individually, the cumulative carbon impact is enormous and completely invisible to any emissions dataset.
+
+The joint family system itself is a carbon-efficient structure. Multiple generations sharing one home, one kitchen, one set of appliances. Compare that to the Western model of individual households, a single person living alone in a large apartment with their own car, their own refrigerator running half empty, their own washing machine used twice a week.
+
+None of this appears in GDP data. None of it appears in renewable energy percentages. The model assigns India's low emissions entirely to poverty. And poverty is certainly part of the explanation. But to reduce India's relationship with resources entirely to economic necessity is to miss something important about how 1.4 billion people actually live.
+
+India's per capita emissions are low partly because India is poor. They are also low because India, at the level of culture and daily practice, has always understood something that the wealthy world is only now beginning to relearn.
+
+The planet does not need everyone to become poorer. It needs everyone to stop treating disposal as the default.
 
 ---
 
@@ -230,11 +247,14 @@ Wealth drives emissions. Renewables reduce them. Everything else is secondary.
 
 That means the climate problem is fundamentally an economic problem. It is about who gets to consume how much, how that consumption is powered, and who bears the cost of changing it. Countries that industrialized early, became wealthy on cheap fossil fuels, and now have the capital to build clean energy systems are in a very different position than countries that are still developing and need energy to do it.
 
+This is why it is very important on how nations when they meet for climate action summit discuss their agendas. It's unfair to propose a common solution to tackle this problem when each nation has it's own needs and disadvantages. 
+Economically well nations can spend money on renewable energy, recycle things but countries in Africa cannot invest same.
+
 The data does not assign blame. But it does make the picture harder to look away from.
 
 ---
 
-*Article 5 publishes June 5, World Environment Day. The final piece brings everything together.*
+*Article 5 publishes on June 5, World Environment Day. The final piece brings everything together.*
 
 *What does this analysis change about how you think about climate responsibility? Drop it in the comments.*
 
