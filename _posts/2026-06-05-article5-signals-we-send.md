@@ -152,21 +152,7 @@ Below is every chart from all five articles in one place. From 1880 temperature 
 
 ---
 
-## My Take
 
-*(Here are honest directions for you to write from)*
-
-Today is World Environment Day 2026. It is being hosted in Azerbaijan, a country that earns the majority of its government revenue from oil and gas exports, situated in a region where geopolitical tensions have made international cooperation harder than at any point in recent memory.
-
-Write about the gap between the ceremony of climate events and the reality of climate data. The speeches today will talk about hope and commitment. The data says we will cross 1.5°C regardless of what is said at any podium.
-
-Write about what it means to be a young person in India looking at these numbers. The 0.29°C difference between best and worst case scenarios represents real consequences for real people in real places, including the city you live in, the temperatures you are already experiencing, and the water sources your region depends on.
-
-Write about the India question specifically. Is it fair to ask a country that contributed almost nothing to the historical accumulation of greenhouse gases to bear equal responsibility for solving the problem? The LSTM does not have an opinion on this. You do.
-
-Write about what building this series taught you. Five articles. Five notebooks. Real data. Real models. What did looking at this data yourself, without a journalist or politician framing it for you, change about how you see the problem?
-
-The Earth has been sending signals for 145 years. The question the series was always building toward is not whether we can read them. We can. The question is what we choose to do with what we have read.
 
 ---
 
