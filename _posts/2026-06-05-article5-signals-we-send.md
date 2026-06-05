@@ -107,12 +107,7 @@ The difference between doing nothing and doing everything we possibly can is 0.2
 
 ## The LSTM Forecast Chart
 
-<div style="width:100%; height:620px;">
-<iframe src="https://nikhcode.github.io/climate-signal-lab/assets/article5_chart.html"
-        width="100%" height="620px"
-        style="border:none; border-radius:8px;">
-</iframe>
-</div>
+[View Interactive LSTM Forecast Chart](https://nikhcode.github.io/climate-signal-lab/assets/article5_chart.html){:target="_blank"}
 
 Look at where the three scenario lines begin in 2025. They are nearly identical for the first few years. This is not a modelling artifact. It reflects something real and important: the near-term trajectory of global temperatures is already largely determined by emissions already in the atmosphere. The choices we make today will show their full effect in 2040 and beyond, not in 2027.
 
@@ -140,12 +135,8 @@ I ran three India-specific scenarios using the same LSTM model:
 
 The difference between doing nothing and matching Brazil is 0.20°C at the global level. But at the India level, the difference is the energy security, air quality, and climate resilience of 1.4 billion people.
 
-<div style="width:100%; height:520px;">
-<iframe src="https://nikhcode.github.io/climate-signal-lab/assets/article5_india.html"
-        width="100%" height="520px"
-        style="border:none; border-radius:8px;">
-</iframe>
-</div>
+[View India 2050 Scenarios](https://nikhcode.github.io/climate-signal-lab/assets/article5_india.html){:target="_blank"}
+
 
 The Brazil comparison matters because it shows what is possible. Brazil did not stay poor to keep its emissions low. It built renewable infrastructure decades ago and is now a developing economy with clean energy and relatively low per capita emissions. The path exists. It requires capital, political will, and international support.
 
@@ -157,12 +148,7 @@ Whether India receives that support, or is left to choose between development an
 
 Below is every chart from all five articles in one place. From 1880 temperature records to 2050 forecasts. From change point detection to solar growth curves to SHAP analysis to neural network scenarios.
 
-<div style="width:100%; height:2000px;">
-<iframe src="https://nikhcode.github.io/climate-signal-lab/assets/article5_dashboard.html"
-        width="100%" height="2000px"
-        style="border:none; border-radius:8px;">
-</iframe>
-</div>
+[View Complete Series Dashboard](https://nikhcode.github.io/climate-signal-lab/assets/article5_dashboard.html){:target="_blank"}
 
 ---
 
