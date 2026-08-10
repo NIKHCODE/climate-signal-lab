@@ -110,7 +110,6 @@ Both charts are interactive. Hovering over the SHAP bars shows the exact values.
 
 The next article in this cluster turns from species-level risk to landscape-level change. Instead of asking which animals are closest to the edge, we will ask whether we can watch the forest disappearing in real time, pixel by pixel, using satellite imagery and a convolutional neural network trained on paired before-and-after images. The technique changes completely. The underlying question, how fast are we losing what we cannot get back, stays the same.
 
-
 There is a number I keep coming back to. Not 40,084, the count of threatened species. Not 0.9545, the model's AUC. It is 98.5 percent: the fraction of life on Earth we have not yet formally assessed. The model in this article is one small attempt to say something useful about that silence. The silence itself is the real finding.
 
 What do you think we are missing in the 98.5 percent we have not looked at yet? Leave a comment below.
