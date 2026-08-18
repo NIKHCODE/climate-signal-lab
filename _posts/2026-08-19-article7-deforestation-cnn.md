@@ -4,36 +4,36 @@ date: 2026-08-19
 categories: [Biodiversity, Deep Learning]
 tags: [cnn, satellite-imagery, deforestation, eurosat, pytorch, computer-vision]
 math: true
-description: "A Convolutional Neural Network trained on 5,000 EuroSAT satellite image patches learns to identify forest from space with 91.2% recall, revealing what machines see in pixels that human eyes miss at scale."
+description: "A Convolutional Neural Network trained on 5,000 EuroSAT satellite image patches learns to identify forest from space with 91.2% recall, revealing what machines see in pixels that human eyes miss."
 ---
 
-Every ten seconds, a patch of forest somewhere on Earth the size of a football field disappears. Not metaphorically. Literally. A chainsaw, a bulldozer, a controlled burn, and what was standing for decades is gone before you finish reading this paragraph. The global figure is roughly 10 million hectares per year, an area larger than South Korea, vanishing annually. That number comes from somewhere. It comes from satellites, and from machines that have learned to look at the same patch of land twice and notice what changed.
+Every ten seconds, a patch of forest somewhere on Earth the size of a football field disappears, which is alarming as much as it sounds dangerous. A chainsaw, a bulldozer, a controlled burn, and what was standing for decades is gone before you finish reading this paragraph. The global figure is roughly 10 million hectares per year, an area larger than South Korea, vanishing annually. That number comes from somewhere. It comes from satellites, and from machines that have learned to look at the same patch of land twice and notice what changed.
 
-This article builds one of those machines from scratch.
+This article builds one of those machines from scratch using the Eurosat data and basic ML algorithms. 
 
-I wanted to understand not just that deforestation is happening, but how the detection systems that track it actually work at the pixel level. The headline numbers we read in climate reports, the 10 million hectares, the percentage of Amazon lost, the rate of forest cover change, all of them trace back to a fundamental computer vision task: teach a model to look at a square of satellite imagery and say, with confidence, whether that square contains forest or not. Get that right, and you can run it over thousands of satellite passes, detect changes automatically, and build an early warning system that operates faster than any human monitoring team could.
-
-I am a first year computer science student at PES University in Bengaluru. I grew up in Andhra Pradesh watching seasonal forests thin over summers that kept getting hotter. The gap between the satellite numbers and the lived experience of that change is something I find myself thinking about a lot. This project is an attempt to close that gap, not emotionally but technically, by understanding the machinery behind the measurement.
+I wanted to understand not just that deforestation is happening, but how the detection systems that track it actually work at the pixel level. The headline numbers we read in climate reports, the 10 million hectares, the percentage of Amazon lost, the rate of forest cover change, all of them trace back to a fundamental computer vision task: teach a model to look at a square of satellite imagery and say, with confidence, whether that square contains forest or not. Get that right, and you can run it over thousands of satellite passes, detect changes automatically, and build an early warning system that operates faster than any human monitoring team could. This was my motivation to build this and here's the details.
+This project is an attempt to close that gap between reading climate reports and warnings on television and social media to researching myself, not emotionally but technically, by understanding the machinery behind the measurement.
 
 What follows is a Convolutional Neural Network trained on 5,000 real satellite image patches from the EuroSAT dataset, evaluated on 1,000 more it had never seen, with a detailed look at what it learned, where it failed, and what those failures tell us about the limits of automated forest monitoring.
 
 
-THE DATA: WHAT A FOREST LOOKS LIKE FROM SPACE
+# THE DATA: WHAT A FOREST LOOKS LIKE FROM SPACE
 
 The EuroSAT dataset was published in 2019 by researchers at the German Research Center for Artificial Intelligence. It contains 27,000 satellite image patches sourced from the Copernicus Sentinel-2 satellite, each patch covering a 64 by 64 pixel area at 10 metre resolution. That means each pixel represents a 10 metre by 10 metre square on the ground. Each 64 by 64 patch covers roughly 0.4 square kilometres of Earth's surface.
 
 The dataset covers 10 land use and land cover classes across Europe:
 
 Annual Crop, Forest, Herbaceous Vegetation, Highway, Industrial, Pasture, Permanent Crop, Residential, River, and SeaLake.
+These classes pretty much cover all the areas where in general deforestation happens.
 
-Each class has between 2,000 and 3,000 labelled image patches. The labels were assigned by human experts cross-referencing the satellite imagery with ground truth land cover maps. This makes EuroSAT one of the most reliable publicly available satellite classification datasets in existence.
+Each class has between 2,000 and 3,000 labelled image patches. The labels were assigned by human experts cross-referencing the satellite imagery with ground truth land cover maps. This makes EuroSAT one of the most reliable publicly available satellite classification datasets in existence and hence I used it.
 
 For this article we used all 10 classes but framed the core question around Forest: can the model learn the visual signature of tree canopy from space, and how well does it distinguish forest from the classes that look most similar, particularly Herbaceous Vegetation and Pasture?
 
 We trained on 5,000 patches and tested on 1,000 patches the model never saw during training. Each image was resized to 64 by 64 pixels, converted to a tensor, and normalised using ImageNet statistics, which centres the pixel values around zero and scales them to unit variance. This normalisation step is standard practice because it makes gradient descent during training numerically stable.
 
 
-THE TECHNICAL APPROACH
+# THE TECHNICAL APPROACH
 
 Convolutional Neural Networks: Teaching a Machine to See
 
@@ -57,7 +57,7 @@ After the three convolutional blocks, the feature maps are flattened into a vect
 
 The total number of learnable parameters in this network is 2,193,226. Each of those parameters is a weight that gets adjusted during training.
 
-How Training Works
+## How Training Works
 
 Training proceeds by the following logic. We show the model a batch of 128 satellite patches. It makes predictions. We compute the cross-entropy loss between those predictions and the true labels:
 
@@ -70,24 +70,24 @@ We then compute how much each of the 2.19 million parameters contributed to that
 We trained for 5 epochs, meaning the model saw the 5,000 training images five complete times.
 
 
-WHAT THE MODEL FOUND
+# WHAT THE MODEL FOUND
 
 The results across five epochs tell a clean story.
 
-The model began its first epoch achieving 63.2% accuracy on the test set, already well above the 10% that random guessing would produce across 10 classes. By the fifth epoch it reached 69.0% overall test accuracy. Training loss fell by 55.1% across the five epochs, confirming that the model was genuinely learning and not just memorising.
+The model began its first epoch achieving 63.2% accuracy on the test set, already well above the 10% that random guessing would produce across 10 classes. By the fifth epoch it reached 69.0% overall test accuracy. Training loss fell by 55.1% across the five epochs, confirming that the model was genuinely learning and not just memorising. This is particulary interesting because the model accuracy in improved to 69% in epoch 5 from 63 in epoch 1.
 
 The forest class specifically performed far better than the overall average. Forest recall reached 91.2%, meaning the model correctly identified 9 out of every 10 forest patches it was shown. For a deforestation detection system, recall on the forest class is the number that matters most. A system that misses forest patches will undercount deforestation. At 91.2% recall after only 5 epochs of training on 5,000 images, the model has learned a robust visual representation of forest canopy from space.
 
 The class the model most often confused with forest was Herbaceous Vegetation, which is the expected failure mode. From 64 by 64 pixels at 10 metre resolution, dense grassland and shrubland produce very similar spectral signatures to sparse or young forest. The green channel values are comparable, the texture is similarly irregular, and the boundary between the two land cover types is often gradual rather than sharp in the real world. This is not a model failure. It is a genuinely hard visual problem. Professional land cover mapping systems use additional spectral bands, particularly the near-infrared channel, specifically to separate vegetation types that look identical in the visible spectrum.
 
-The per-class results reveal the full picture. Annual Crop achieved 94.1% accuracy and SeaLake achieved 87.9%, both substantially above the overall average. These classes have unmistakable visual signatures: agricultural fields appear as regular geometric patterns in straight-edged parcels, and water bodies appear as uniformly dark, textureless regions. The model learns these signatures almost immediately.
+The per-class results reveal the full picture. Annual Crop achieved 94.1% accuracy and SeaLake achieved 87.9%, both substantially above the overall average. These classes have unmistakable visual signatures: agricultural fields appear as regular geometric patterns in straight-edged parcels, and water bodies appear as uniformly dark, textureless regions. The model learns these signatures almost immediately and hence these reuslts.
 
 At the other end, Pasture achieved only 40.3% and Highway achieved 44.7%. Pasture blends visually with Herbaceous Vegetation and Annual Crop depending on season and management intensity. Highways are thin linear features that may occupy only a fraction of a 64 by 64 patch, making them difficult to distinguish from residential or industrial areas that also contain linear structures. These failure cases point directly to the real limitations of automated satellite monitoring: seasonal variation, spatial resolution, and the fundamental ambiguity of land cover categories that shade into each other in the real world.
 
 Published benchmarks on the full EuroSAT dataset with 15 or more epochs of training consistently reach 87 to 92% overall accuracy. Our 69% reflects the reduced training set and shorter training run, not a flaw in the architecture. The forest recall of 91.2% is consistent with full-scale published results, which suggests the model prioritised the forest class correctly even with limited training.
 
 
-THE VISUALISATIONS
+# THE VISUALISATIONS
 
 The training curve shows the model's loss and accuracy across all five epochs. The loss line drops steadily from epoch 1 to epoch 5 with no sign of sudden spikes or reversals, which confirms stable training. The test accuracy line climbs correspondingly. The gap between training loss and test loss is small and consistent, indicating the model is generalising rather than overfitting to the training data.
 
@@ -104,20 +104,26 @@ The confusion matrix is the most informative output of the entire analysis. It i
 </div>
 
 
-MY TAKE
+# MY TAKE
 
-[This section is yours. A few directions to consider:]
+Developing this model and understanding the findings is something that took time but was really helpful in making me understand on how to look into the deforestation beyond the routine rhetoric. 
+
+The Herbveg confusion is a note worthy point because the model can really confuse it with the other vegetation lands and if let's say someone just reads those reports they will have no true picture beyond the final data. The model here helps to go deep and discover what's the real story.
 
 The 91.2% forest recall after 5 epochs on 5,000 images is the number I would lead with personally. The systems that generate the 10 million hectare per year figure are running architectures not fundamentally different from what we built here, just with more bands, more data, and more compute. The gap between this notebook and a production deforestation monitoring system is engineering, not science.
 
-The HerbVeg confusion is also worth writing about from your own angle. In Andhra Pradesh, the boundary between degraded forest and scrubland is exactly the kind of ambiguity that makes satellite-based forest accounting politically contested. When a government claims forest cover has increased, and the satellite data shows green pixels, the question of what counts as forest versus what counts as vegetation is not a technical footnote. It is the entire debate.
+Also we see the government saying with their reports that the green cover has increased over the years and their environmental policies are working (on which they also rush to grab political mileage) but the question of what counts as forest versus what counts as vegetation is debatable.
 
-There is also something worth saying about what 10 metres per pixel means in practice. Each pixel in these patches represents a 10 metre by 10 metre square. A single large tree can occupy one pixel. A small clearing may not register at all. The things we are losing are sometimes too small for the systems we use to measure loss to see.
+So this ambiguity and doubts must properly be addressed before we proceed making sensational reports over headlines.
+
+We all have for years learnt how deforestation is happening and how harmful it is and stories of brave women from India who formed chains around trees to stop cutting them and many such but it's also our duty to look at numbers at compare it with reality.
+
+#### After all development shouldn't come at the cost of trees.
 
 
-WHAT IS NEXT
+## WHAT IS NEXT
 
-Article 3.03 moves from pixels to systems. Instead of asking whether a patch of land contains forest, it asks whether the Amazon rainforest as a whole is approaching a critical transition point, a tipping point beyond which the forest begins converting to savanna regardless of what humans do. The technique is resilience analysis: measuring statistical early warning signals in the vegetation data itself, the rising variance and increasing autocorrelation that theory predicts should appear in any complex system as it approaches a catastrophic shift. Same satellite data, completely different question.
+Article 8 moves from pixels to systems. Instead of asking whether a patch of land contains forest, it asks whether the Amazon rainforest as a whole is approaching a critical transition point, a tipping point beyond which the forest begins converting to savanna regardless of what humans do. The technique is resilience analysis: measuring statistical early warning signals in the vegetation data itself, the rising variance and increasing autocorrelation that theory predicts should appear in any complex system as it approaches a catastrophic shift. Same satellite data, completely different question.
 
 
 The forest was here yesterday. A machine can learn to see that it is gone today. The harder question is whether we are building enough of these machines fast enough, and pointing them at the right places. The Amazon is one of those places. That is where we go next.
